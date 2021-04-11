@@ -1,33 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <h2>aaa</h2>
-    </div>
-    <router-view/>
+    <router-view></router-view>
+    <MinTabbar></MinTabbar>
   </div>
 </template>
+<script>
+import MinTabbar from 'components/content/minTabbar/MinTabbar'
+export default {
+  name: "App",
+  data() {
+    return {};
+  },
+  methods: {},
+  components: {
+    MinTabbar
+  },
+};
+</script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@import 'assets/css/base.css';
 </style>
