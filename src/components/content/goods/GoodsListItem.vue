@@ -1,7 +1,7 @@
 <!--  -->
 <template>
-  <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" :key="goodsItem.show.showImage" />
+  <div class="goods-item" @click="itemJump">
+    <img :src="getProImg" alt=""   @load="imgLoad"/>
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -27,11 +27,25 @@ export default {
   },
   components: {},
   //监听属性 类似于data概念
-  computed: {},
+  computed: {
+    getProImg(){
+      return this.goodsItem.image||this.goodsItem.show.img 
+    }
+  },
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    imgLoad(){
+      //刷新scroll高度用
+      this.$bus.$emit('itemImgLoad')
+    },
+    itemJump(){
+      this.$router.push('/detail/'+this.goodsItem.iid)
+
+    }
+    
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）

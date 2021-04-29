@@ -11,7 +11,16 @@
 import BetterScroll from "better-scroll";
 export default {
   name: "Scroll",
-  props: {},
+  props: {
+    probeType: {
+      type: Number,
+      default: 0
+    },
+    pullUpLoad: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     //这里存放数据
     return {
@@ -24,17 +33,42 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    finishTop() {
+      this.scroll && this.scroll.finishPullUp();
+    },
+    scrollTo(x, y, time=300) {
+      this.scroll && this.scroll.scrollTo(x, y, time);
+    },
+    refresh() {
+      this.scroll && this.scroll.refresh();
+
+    }
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
     this.scroll = new BetterScroll(this.$refs.wrap, {
-      probeType: 3,
+      probeType: this.probeType,
       movable: true,
       zoom: true,
-      observeDOM: true
+      click: true,
+      observeDOM: true,
+      observeImage: true,
+      pullUpLoad: this.pullUpLoad
     });
+   
+    if (this.probeType == 2 || this.probeType == 3) {
+      this.scroll.on('scroll',(position)=>{
+        this.$emit('scroll',position.y)
+      })
+    }
+    if (this.pullUpLoad) {
+      this.scroll.on("pullingUp", () => {
+        this.$emit("pullGet");
+      });
+    }
   }
   //beforeCreate() {}, //生命周期 - 创建之前
   //beforeMount() {}, //生命周期 - 挂载之前

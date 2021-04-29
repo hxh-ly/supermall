@@ -25,7 +25,8 @@ export default {
   data() {
     //这里存放数据
     return {
-      currentIndex: 0
+      currentIndex: 0,
+      offsetTop:0
     };
   },
   //监听属性 类似于data概念
@@ -35,6 +36,8 @@ export default {
   //方法集合
   methods: {
 changeIndex(index){
+  console.log(index);
+  
   this.currentIndex=index;
    this.$emit('tabClick',index);
 }
