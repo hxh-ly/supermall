@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="tab-bar-item" @click="itemclick">
+  <div class="tab-bar-item ignore" @click="itemclick">
     <div v-if="!ActiveCheck"><slot name="slot-img"> </slot></div>
     <div v-else><slot name="slot-img-active"> </slot></div>
     <div :style="activeColor">

@@ -61,10 +61,10 @@ activated() {
 <style scoped>
 .cart-list{
   /* position: relative; */
-  height: calc(100% - 44px - 49px);
+   height: calc(100% - 44px - 49px);
 }
 .content{
-  height: 100%;
+   height: 100%;
   overflow: hidden;
 }
 /* .content {

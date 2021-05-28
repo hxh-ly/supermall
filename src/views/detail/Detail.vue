@@ -1,9 +1,6 @@
 <!--  -->
 <template>
   <div id="detail">
-    <ul >
-      <li v-for="item in $store.state.cartList">{{item}}</li>
-    </ul>
     <detail-bar class="nav-bar" @titleClick="titleClick" ref="nav"></detail-bar>
     <scroll
       class="content"
@@ -30,6 +27,7 @@
     </scroll>
     <back-top @click.native="backClick" v-show="isShowTop"></back-top>
     <detail-bottom-bar @addCart="addInCart"></detail-bottom-bar>
+    
   </div>
 </template>
 
@@ -43,6 +41,7 @@ import DetailParamInfo from "./childComps/DetailParamInfo";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
 import GoodsList from "components/content/goods/GoodsList";
 import DetailBottomBar from "./childComps/DetailBottomBar";
+
 import {
   getDetail,
   getRecommend,
@@ -135,6 +134,9 @@ export default {
       product.iid = this.iid;
       //console.log(product);
         this.addCart(product).then(res=>{
+          console.log(this.$toast);
+          
+          this.$toast.show(res,2000)
           console.log(res);
           
         })
