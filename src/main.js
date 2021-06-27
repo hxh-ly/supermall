@@ -9,7 +9,7 @@ import VueLazyLoad from "vue-lazyload";
 Vue.config.productionTip = false
 Vue.use(toast)
 Vue.use(VueLazyLoad,{
-  loading:require('./assets/img/common/placeholder.png')
+  loading:require('./assets/img/common/loading.png')
 })
 
 //解决移动端300ms延迟
