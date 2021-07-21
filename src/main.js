@@ -13,7 +13,7 @@ Vue.use(VueLazyLoad,{
 })
 
 //解决移动端300ms延迟
-FastClick.attach(document.bodyn)
+FastClick.attach(document.body)
 
 Vue.prototype.$bus=new Vue()
 new Vue({
